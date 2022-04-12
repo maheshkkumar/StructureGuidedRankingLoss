@@ -13,20 +13,27 @@ import torch
 import torch.nn as nn
 import torchvision.transforms as transforms
 from torch.utils.data import DataLoader
+
 torch.backends.cudnn.deterministic = True
 torch.manual_seed(123)
 
-import os, argparse, sys
-import numpy as np
+import argparse
 import glob
+import os
+import sys
+
 import matplotlib.pyplot as plt
+import numpy as np
+
 plt.switch_backend('agg')
 import warnings
+
 warnings.filterwarnings("ignore")
 from PIL import Image
 
 sys.path.append('models')
 import DepthNet
+
 
 # =======================
 # demo

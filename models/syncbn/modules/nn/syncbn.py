@@ -5,9 +5,7 @@ BatchNorm2dSync with multi-gpu
 
 /*****************************************************************************/
 """
-from __future__ import absolute_import
-from __future__ import division
-from __future__ import print_function
+from __future__ import absolute_import, division, print_function
 
 try:
     # python 3
@@ -18,7 +16,8 @@ except ImportError:
 
 import torch
 import torch.nn as nn
-from modules.functional import batchnorm2d_sync
+from models.StructureGuidedRankingLoss.models.syncbn.modules.functional import \
+    batchnorm2d_sync
 
 
 class BatchNorm2d(nn.BatchNorm2d):

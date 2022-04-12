@@ -8,18 +8,12 @@ Date: 2019/04/09
 '''
 
 import torch
-import torchvision
 import torch.nn as nn
-import torch.nn.functional as F
 import torch.nn.init as init
 
-import sys
-sys.path.append('/data0/kexian/Code/kxian_Adobe/MPO_edgeGuidedRanking/models/syncbn')
-from modules import nn as NN
+from models.StructureGuidedRankingLoss.models import resnet
+from models.StructureGuidedRankingLoss.models.networks import *
 
-import resnet
-
-from networks import *
 
 class Decoder(nn.Module):
     def __init__(self, inchannels = [256, 512, 1024, 2048], midchannels = [256, 256, 256, 512], upfactors = [2,2,2,2], outchannels = 1):
@@ -55,7 +49,7 @@ class Decoder(nn.Module):
                 #init.xavier_normal_(m.weight)
                 if m.bias is not None:
                     init.constant_(m.bias, 0)
-            elif isinstance(m, NN.BatchNorm2d): #NN.BatchNorm2d
+            elif isinstance(m, nn.SyncBatchNorm): #NN.BatchNorm2d
                 init.constant_(m.weight, 1)
                 init.constant_(m.bias, 0)
             elif isinstance(m, nn.Linear):
