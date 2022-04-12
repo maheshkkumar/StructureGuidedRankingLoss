@@ -1,0 +1,4 @@
+Updated the original SGR code to use a config file instead of argparse.
+Added the following files:
+1. ./eval.py
+3. ./log.txt
